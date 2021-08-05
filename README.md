@@ -15,3 +15,7 @@ Components needed:
 
 
 ---
+
+![](https://github.com/tordnat/ShotBotV2/blob/main/front.png)
+![](https://github.com/tordnat/ShotBotV2/blob/main/top.png)
+![](https://github.com/tordnat/ShotBotV2/blob/main/side.png)
