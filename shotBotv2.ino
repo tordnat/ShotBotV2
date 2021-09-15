@@ -38,23 +38,25 @@ void setup() {
   pinMode(omiron_switch, INPUT);
   Serial.begin(115200);
   digitalWrite(pump, HIGH);
+  digitalWrite(laser, HIGH);
+
 
 }
  
 void loop() {
-  if(switchAndStateIsActive()){
-    shotBotState = 1;
-    Serial.println("Value: " + static_cast<String>(switchReadValue));
-    event();
-    //Cooldown
-    delay(5000);
-  }
- 
- else {
-    digitalWrite(laser, LOW);
-    digitalWrite(pump, HIGH);
-    shotBotState = 0;
+  digitalWrite(pump, HIGH);
+  if(digitalRead(omiron_switch)){
+        digitalWrite(pump, LOW);
+        playTakeOnMe();
+        
+     
+
+        
+    
     }
+  
+
+
 }
 
 
@@ -100,10 +102,8 @@ void drawEvent(int randomNumber){
         drink();
         break;
       case 4:
-        everyoneDrinks();
         break;
       case 5:
-        everyoneDrinks();
         break;
       default:
         lose();
@@ -113,9 +113,9 @@ void drawEvent(int randomNumber){
   
 void drink(){
     Serial.println("Drink Triggered!");
-    digitalWrite(laser, HIGH);
+    digitalWrite(laser, LOW);
     playTakeOnMe();
-    digitalWrite(pump, LOW);
+    digitalWrite(pump, HIGH);
     digitalWrite(pump, HIGH);
     delay(5000);
   }
